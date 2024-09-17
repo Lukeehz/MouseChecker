@@ -7,18 +7,12 @@
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
 </head>
 <body>
-    <h1>MouseCheck</h1>
+    <h1 class="ctxt">MouseCheck</h1>
 
     <div class="container">
-        <div class="buttons">
-            <div id="btnLeft" class="btnLeft" onclick="getLeftClick()"></div>
-            <div class="scroll">
-                <div class="scrollup"></div>
-                <div class="scrolldown"></div>
-            </div>
-            <div id="btnRight" class="btnRight" onclick="getRightClick()"></div>
-        </div>
+        <img class="fluid-image" id="mouse" src="assets/mouse.png" alt="mouse" onscroll="scroll()">
     </div>
+
 </body>
 <script src="preload.js"></script>
 </html>

@@ -1,5 +1,7 @@
 const { app, BrowserWindow } = require('electron/main')
 const path = require('path');
+const imagePath = (image) => path.join(__dirname, 'assets', image);
+
 
 function createWindow () {
     const win = new BrowserWindow({

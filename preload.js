@@ -1,42 +1,55 @@
 window.addEventListener('DOMContentLoaded', () => {
-  const replaceText = (selector, text) => {
-      const element = document.getElementById(selector);
-      if (element) element.innerText = text;
-  };
+    const replaceText = (selector, text) => {
+      const element = document.getElementById(selector)
+      if (element) element.innerText = text
+    }
 
-  const btnLeft = document.querySelector('#btnLeft');
-  const btnRight = document.querySelector('#btnRight');
+    const mouse = document.getElementById('mouse');
+    mouse.addEventListener('click', () => {
+      mouse.src = ('assets/leftBtn.png');
+      console.log('mouse clicked');
+      setInterval(() => {
+        retorno()
+      }, 500);
+    });
 
-  // Função para alterar temporariamente a classe
-  function temporarilyChangeClass(element, newClass, oldClass) {
-      if (element) {
-          element.classList.add(newClass);
-          element.classList.remove(oldClass);
+    mouse.addEventListener('contextmenu', (e) => {
+      e.preventDefault()
+      mouse.src = ('assets/RightBtn.png');
+      console.log('mouse clicked');
+      setInterval(() => {
+        retorno()
+      }, 5000);
+    });
 
-          // Define um temporizador para reverter a classe após 1 segundo
-          setTimeout(() => {
-              element.classList.add(oldClass);
-              element.classList.remove(newClass);
-          }, 100); // Altere 1000 para a duração desejada em milissegundos
+
+
+
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', (e) => {
+      const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (currentScrollTop < lastScrollTop) {
+        mouse.src = 'assets/scrollbtn.png';
+        console.log('mouse scrolled up');
+
+        setTimeout(() => {
+          retorno();
+        }, 5000);
       }
-  }
+      lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop; 
+    });
+    
+    function retorno() {
+      // Defina a função retorno aqui
+      console.log('Função retorno chamada');
+    }
+    
 
-  // Listener para cliques no documento
-  document.addEventListener('mousedown', (event) => {
-      if (event.button === 0) { // Clique esquerdo
-          temporarilyChangeClass(btnLeft, 'btnLeft2', 'btnLeft');
-      } else if (event.button === 2) { // Clique direito
-          temporarilyChangeClass(btnRight, 'btnRight2', 'btnRight');
-      }
+    function retorno (){
+      mouse.src = ('assets/mouse.png');
+    }
+    
+    for (const type of ['chrome', 'node', 'electron']) {
+      replaceText(`${type}-version`, process.versions[type])
+    }
   });
-
-  // Adiciona um listener para evitar o menu de contexto ao clicar com o botão direito
-  document.addEventListener('contextmenu', (event) => {
-      event.preventDefault(); // Isso evitará que o menu de contexto padrão seja exibido
-  });
-
-  // Substitui a informação da versão
-  for (const type of ['chrome', 'node', 'electron']) {
-      replaceText(`${type}-version`, process.versions[type]);
-  }
-});
