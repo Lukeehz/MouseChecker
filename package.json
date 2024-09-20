@@ -8,15 +8,15 @@
     "dist": "electron-builder"
   },
   "keywords": [],
-  "author": "",
+  "author": "Lukeehz",
   "license": "ISC",
-  "description": "",
+  "description": "Testador de mouse", 
   "devDependencies": {
     "electron": "^32.1.0",
     "electron-builder": "^25.0.5"
   },
   "build": {
-    "appId": "com.example.mousecheck",
+    "appId": "mousecheck",
     "productName": "MouseCheck",
     "files": [
       "index.js",
@@ -24,10 +24,10 @@
       "preload.js",
       "style.css",
       "node_modules/**/*",
+      "assets/**/*",
       "package.json"
     ],
     "win": {
-      "target": "nsis",
       "icon": "icon.ico"
     },
     "mac": {
