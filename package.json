@@ -18,6 +18,9 @@
   "build": {
     "appId": "mousecheck",
     "productName": "MouseCheck",
+    "directories": {
+      "output": "dist"
+    },
     "files": [
       "index.js",
       "index.html",
@@ -34,7 +37,8 @@
       "icon": "icon.icns"
     },
     "linux": {
-      "icon": "icon.png"
+      "icon": "icon.png",
+      "target": ["AppImage", "deb"]
     }
   }
 }
